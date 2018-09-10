@@ -19,3 +19,9 @@ test-upload:
 upload:
 	twine upload dist/SimpleHTTPAuthServer-1.2.tar.gz -r pypi
 
+dev:
+	docker build -t simple-http-auth-server:dev .
+
+	docker run -it --rm \
+		--volume `pwd`:/usr/src/app \
+		simple-http-auth-server:dev
