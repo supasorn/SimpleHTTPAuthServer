@@ -92,7 +92,8 @@ def main():
             print("", file=sys.stderr)
             sys.exit(1)
 
-    SimpleHTTPAuthHandler.KEY = base64.b64encode(args.key)
+    SimpleHTTPAuthHandler.KEY = base64.b64encode(args.key.encode("utf-8"))
+    #SimpleHTTPAuthHandler.KEY = base64.b64encode(args.key)
 
     serve_https(int(args.port), https=args.https,
                 start_dir=args.dir, handler_class=SimpleHTTPAuthHandler)
